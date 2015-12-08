@@ -10,8 +10,8 @@ Following along, trying to document as much as I can about Clojurescript
 ---
 1) Install [Leiningen](http://leiningen.org/)
 
-2) Install rlwrap [Ubuntu](http://packages.ubuntu.com/precise/rlwrap); believe
-me you'll need it for cursor key sanity!
+2) Install rlwrap [Ubuntu](http://packages.ubuntu.com/precise/rlwrap) (believe
+me you'll need it for cursor key sanity!)
 ---
 To get an interactive development environment run:
 
