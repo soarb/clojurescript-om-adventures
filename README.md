@@ -51,10 +51,12 @@ __With your browser connected to the REPL the updates should be immediate! MAGIC
 ## Protip!
 `(swap! app-state update-in [:contacts 1] assoc :first (str "Alice " "In Wonderland"))`
 
-If we deconstruct this, we're invoking the swap! function which will _apply_ the
+If we deconstruct this, we're invoking the `swap!` function which will _apply_ the
 `update-in` function to the current atom state `app-state`. 
 
 The `update-in` function allows us to change the value in a map at a specific
 key path. It takes a sequence of keys `[:contacts 1]` (the path within the map 
 to the value we want to update) and a function `assoc` that will take the old 
 value plus any arguments supplied to it `:first (str "Alice " "In Wonderland")`
+
+Simples! :)
