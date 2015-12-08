@@ -35,7 +35,7 @@ get live reloading, nor a REPL.
 
 ## Stuff to play with
 * Switch namespace to application namespace
-=> `(in-ls 'om-tut.core)`
+=> `(in-ns 'om-tut.core)`
 
 * Lets deref app-state atom (prints it out in REPL)
 => `@app-state`
