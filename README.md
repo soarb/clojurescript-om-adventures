@@ -14,7 +14,7 @@ Following along, trying to document as much as I can about Clojurescript
 
 To get an interactive development environment run:
 
-    lein figwheel
+    rlwrap lein figwheel
 
 and open your browser at [localhost:3449](http://localhost:3449/).
 This will auto compile and send all changes to the browser without the
