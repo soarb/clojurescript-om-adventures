@@ -1,13 +1,10 @@
 ## clojurescript-om-adventures
----
 First play with Clojurescript and Om ([Basic Tutorial](https://github.com/omcljs/om/wiki/Basic-Tutorial))
 
 ## Overview
----
 Following along, trying to document as much as I can about Clojurescript
 
 ## Setup
----
 1) Install [Leiningen](http://leiningen.org/)
 
 2) Install rlwrap (for cursor key sanity) [Ubuntu](http://packages.ubuntu.com/precise/rlwrap)
@@ -37,7 +34,6 @@ And open your browser in `resources/public/index.html`. You will not
 get live reloading, nor a REPL. 
 
 ## Stuff to play with
----
 * Switch namespace to application namespace
 => `(in-ls 'om-tut.core)`
 
@@ -52,8 +48,7 @@ get live reloading, nor a REPL.
 
 __With your browser connected to the REPL the updates should be immediate! MAGIC!__
 
-###### Protip!
----
+## Protip!
 `(swap! app-state update-in [:contacts 1] assoc :first (str "Alice " "In Wonderland"))`
 
 If we deconstruct this, we're invoking the swap! function which will _apply_ the
