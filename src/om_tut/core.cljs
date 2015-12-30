@@ -56,7 +56,7 @@
     (render-state [this {:keys [delete]}]
       (dom/li nil 
         (dom/span nil (display-name contact))
-        (dom/button #js {:onClick (fn [e] (put! delete @contact))} "Delete")))))
+        (dom/button #js {:onClick (fn [e] (put! delete @contact) (.preventDefault e))} "Delete")))))
 
 (defn contacts-view [data owner]
   ;; implement the react/om lifecycle functions we want to
