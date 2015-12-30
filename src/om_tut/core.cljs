@@ -5,7 +5,8 @@
             ;; :refer gets us only the specific functions
             ;; we want from the core.async package and we
             ;; get three functions put!, chan and <!
-            [cljs.core.async :refer [chan <! put!]]))
+            [cljs.core.async :refer [chan <! put!]]
+            [clojure.string :as string]))
 
 (enable-console-print!)
 
@@ -22,6 +23,24 @@
        {:first "Louis" :last "Reasoner" :email "prolog@mit.edu"}
        {:first "Cy" :middle-initial "D" :last "Effect" :email "bugs@mit.edu"}
        {:first "Lem" :middle-initial "E" :last "Tweakit" :email "morebugs@mit.edu"}]}))
+
+(defn parse-contact [contact-str]
+  (let [[first middle last :as parts] (string/split contact-str #"\s+")
+        [first last middle] (if (nil? last) [first middle] [first last middle])
+        middle (when middle (string/replace middle "." ""))
+        c (if middle (count middle) 0)]
+    ;; let body applies initials when the number of parts >= 2
+    ;;
+    (when (>= (count parts) 2)
+      ;; take an expression in this case a map which we initialse with
+      ;; first and last names keyed on :first and :last keywords which
+      ;; we then apply a set of test/form pairs to; any test resulting
+      ;; in true applies the form to the expression 
+      (cond-> {:first first :last last}
+        ;; test  form
+        (== c 1) (assoc :middle-initial middle)
+        ;; test  form
+        (== c 2) (assoc :middle middle)))))        
 
 (defn middle-name [{:keys [middle middle-initial]}]
   (cond
@@ -77,15 +96,7 @@
               (fn [contacts]
                 ;; shouldn't store lazy collections/sequences in an atom
                 ;; so we convert to a vector type 
-                (vec
-                  ;; remove applies each element in our contacts 
-                  ;; collection to our #(= contact %) comparison
-                  ;; function - returns a lazy sequence of items
-                  ;; that our function returns false for
-                  (remove #(= contact %) contacts)
-                )
-              )
-            )
+                (vec (remove #(= contact %) contacts))))
             ;; invoke the loop again
             (recur))))))
     om/IRenderState
